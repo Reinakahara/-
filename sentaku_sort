@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+int main()
+#define NUM 10
+{
+	int ten[NUM];
+	int chng, max, fir, snd, chng1;
+
+	printf("並び替える整数値１０個を入力してください。\n");
+	for (chng = 0; chng < NUM; chng++) {
+		scanf_s("%d", &ten[chng]);
+		/*繰り返して配列に数値を格納する。*/
+	}
+	chng = 0;
+	/*まず最初に最大値とする変数を配列の一番目とする*/
+	for (fir = 0; fir < NUM - 1; fir++) {
+		max = ten[fir];
+		chng = fir;
+		for (snd = fir + 1; snd < NUM; snd++) {
+			/*仮の最大値のとそれ以外の配列の要素を１つずつ比較する。*/
+			/*仮に最大値とした数値よりも大きい値が配列に格納されていた場合は最大値をその値と入れ替え、*/
+			/*入れ替えた部分の配列の番号を記憶する。*/
+			if (ten[fir] < ten[snd]) {
+				max = ten[snd];
+				chng = snd;
+			}
+		}
+		/*記憶した最大値のある配列の番号とその最大値の値を利用し、*/
+		/*配列の一番目と最大値の数値を入れ替える。*/
+		chng1 = ten[fir];
+		ten[fir] = ten[chng];
+		ten[chng] = chng1;
+	}
+	printf("入力された整数を降順に並び替えると");
+	for (chng = 0; chng < NUM; chng++) {
+		printf("%d,", ten[chng]);
+	}
+	printf("となります。");
+	return 0;
+}
